@@ -1,0 +1,35 @@
+
+1:
+setof(A,city(A,guangzhou,panyu),Res).
+
+
+2:
+setof(A,(school(A,_,985),school(A,_,dfc)),Res).
+
+
+3:
+setof(A,(school(A,_,211),\+school(A,_,985),\+school(A,_,dfc)),Res).
+
+
+4:
+setof(A,(school(A,B,211),B>=1930,B<1940),Res).
+
+
+5:
+setof(A,(city(A,guangzhou,_),city(A,shenzhen,_),city(A,zhuhai,_)),Res).
+
+
+6:
+%% longest(Sch):-school(Sch1,Y1,_),school(Sch2,Y2,_),Sch1\=Sch2,Y1<Y2.
+%% longest(Sch):-school(Sch1,Y1,_),setof(Schs,school(Schs,Y1,_),Res),length(Res,1).
+%% setof(A1,(school(A1,Y1,_),school(A2,Y2,_),A1\=A2,Y1<Y2,setof(As,school(As,Y1,_),Results),length(Results,1)),Res).
+findall(A1,(school(A1,Y1,_),school(A2,Y2,_),A1\=A2,Y1<Y2,setof(As,school(As,Y1,_),Results),length(Results,1)),Res).
+
+
+7:
+findall(Sch,(setof(Campuses,City^city(Sch,City,Campuses),Results),length(Results,2)),Res).
+
+
+8:
+sameDistrict(School1,School2):-school(School1,_,District1),school(School2,_,District2),District1 = District2,School1\=School2.
+findall(pair(School1,School2),sameDistrict(School1,School2),Res).

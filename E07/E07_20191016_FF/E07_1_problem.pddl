@@ -1,0 +1,8 @@
+(define (problem prob)
+(:domain puzzle)
+(:objects T0 T1 T2 T3 T4 T5 T6 T7 T8 -num L1 L2 L3 L4 L5 L6 L7 L8 L9 -loc)
+(:init (at T1 L1) (at T2 L2)(at T3 L3) (at T7 L4) (at T8 L5)(at T0 L6) (at T6 L7)(at T4 L8) (at T5 L9)
+  (adj L5 L2)(adj L5 L4) (adj L5 L6) (adj L5 L8) (adj L1 L2) (adj L2 L3) 
+(adj L1 L4) (adj L3 L6) (adj L7 L8) (adj L8 L9) (adj L4 L7)(adj L6 L9))  
+(:goal (and(at T1 L1) (at T2 L2) (at T3 L3) (at T4 L4) (at T5 L5) (at T6 L6) (at T7 L7) (at T8 L8) (at T0 L9)))
+)

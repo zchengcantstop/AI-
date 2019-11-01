@@ -1,0 +1,14 @@
+1.setof(A,(branch(A,beigang)),Res).
+
+2.setof(C,((restaurant(A,_,yuecai),branch(A,B),district(B,C),restaurant(D,_,xiangcai),branch(D,F),district(F,C))),Res).
+
+3.setof(A1,(Y^Y2^(setof(B1,branch(A1,B1),Results1),length(Results1,Y),\+ (setof(B2,branch(A2,B2),Results2),length(Results2,Y2),\+ Y=<Y2))),Res).
+%这里不用Y^Y2 也是可以的，因为prolog中的变量默认是按照存在来寻找的，变量为存在量词，同理5也是如此
+4.setof(B,(setof(A,branch(A,B),Results),length(Results,C),C>=2),Res).
+
+5.setof(A1,(Y^Y2^(restaurant(A1,Y,_),\+ (restaurant(A2,Y2,_),\+ Y=<Y2))),Res).
+
+6.setof(A,(setof(B,branch(A,B),Results),length(Results,C),C>=10),Res).
+
+7.sameDistrict(A,B):-branch(A,C),branch(B,D),C=D,A\=B.
+query:findall(pair(A,B),sameDistrict(A,B),Res).
